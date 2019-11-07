@@ -6,10 +6,10 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
 WORKDIR /src
-COPY ["./Hello/Hello.csproj", "Hello/"]
-RUN dotnet restore "Hello/Hello.csproj"
+COPY ["Hello/Hello.csproj", "c:/Hello/"]
+RUN dotnet restore "c:/Hello/Hello.csproj"
 COPY . .
-WORKDIR "/src/Hello"
+WORKDIR "c:/src/Hello"
 RUN dotnet build "Hello.csproj" -c Release -o /app/build
 
 FROM base AS final
